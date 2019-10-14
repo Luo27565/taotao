@@ -2,7 +2,7 @@
 
     <el-row>
 
-        <el-button v-for="item in input">{{item.name}}</el-button>
+        <el-button v-for="item in input" :key="item.index" @click="onButtonClick(item.id)">{{item.name}}</el-button>
 
     </el-row>
 
@@ -16,7 +16,12 @@
     export default class ButtonGroup extends Vue {
 
         @Prop({default: []})
-        public input: ButtonGroupModel[];
+        public input!: ButtonGroupModel[];
+
+        public onButtonClick(id: string) {
+            this.$emit('output', id);
+        }
+
     }
 </script>
 
