@@ -1,9 +1,9 @@
 <template>
+    <div>
+        <el-menu background-color="#EEF5F9"
 
-    <el-col :span="4">
-        <el-menu mode="vertical" router="true" background-color="#EEF5F9"
                  active-text-color="#378FE7">
-            <el-submenu v-for="item of input" :key="item.index" :index="item.router">
+            <el-submenu v-for="item of input" :key="item.index" :index='item.router'>
                 <template slot="title">
                     <i :class="item.icon"></i>
                     <span>{{item.name}}</span>
@@ -17,7 +17,7 @@
                 </el-menu-item-group>
             </el-submenu>
         </el-menu>
-    </el-col>
+    </div>
 
 </template>
 
