@@ -1,31 +1,44 @@
 <template>
     <div>
-        <h2>Hello World!</h2>
-        <ButtonGroup :input='buttons' @output="output"></ButtonGroup>
-        <NavMenu :input="navs"></NavMenu>
+        <el-container class="container">
+            <el-header height="60px">
+                <div class="header">
+                    <div class="header-font">后台管理</div>
+                    <div>
+                        <el-button class="el-icon-switch-button" circle></el-button>
+                    </div>
+                </div>
+            </el-header>
+            <el-container>
+                <el-aside width="200px">
+                    <NavMenu></NavMenu>
+                </el-aside>
+                <el-main>
+                    <router-view/>
+                </el-main>
+            </el-container>
+            <el-footer height="40px">Footer</el-footer>
+        </el-container>
     </div>
 </template>
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
-    import ButtonGroup from '@/components/Button-group.vue';
-    import {ButtonGroupModel} from '@/components/model/button-group.model';
     import NavMenu from '@/components/Nav-menu.vue';
     import {NavMenuModel} from '@/components/model/nav-menu.model';
 
     @Component({
         components: {
             NavMenu,
-            ButtonGroup,
         },
     })
     export default class Index extends Vue {
-        public buttons: ButtonGroupModel[] = [{name: '关闭', id: 'close'}, {name: '刷新', id: 'refresh'}];
+
         public navs: NavMenuModel[] = [
-            {name: '首页', icon: 'icon-ali-home', router: 'home', navItem: []},
+            {name: '首页', icon: 'icon-ali-home', router: '/cat/index', navItem: []},
             {
                 name: '猫咪', icon: 'icon-ali-maomi1', router: 'cat', navItem: [
-                    {name: '猫咪详情', icon: 'icon-ali-xiangqing', router: 'detail'},
+                    {name: '猫咪详情', icon: 'icon-ali-xiangqing', router: '/cat/detail'},
                     {name: '猫咪分类', icon: 'icon-ali-icon', router: 'category'},
                     {name: '添加猫咪', icon: 'icon-ali-tuanduicankaoxian-', router: 'add'},
                 ],
@@ -43,16 +56,31 @@
             },
         ];
 
-        public output(id: string): void {
-            if (id === 'close') {
-                window.close();
-            } else {
-                alert(id);
-            }
-        }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .container {
+        height: 100vh;
+    }
+
+    .el-header {
+        background-color: #EEF5F9;
+
+        .header {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .header-font {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .el-aside {
+        background-color: #EEF5F9;
+    }
 
 </style>

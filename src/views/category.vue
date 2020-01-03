@@ -1,7 +1,5 @@
 <template>
-    <div>
-        详情
-    </div>
+    <div>分类</div>
 </template>
 
 <script lang="ts">
@@ -10,12 +8,12 @@
     @Component({
         components: {},
     })
-    export default class Detail extends Vue {
+    export default class Category extends Vue {
 
     }
 
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 
 </style>
